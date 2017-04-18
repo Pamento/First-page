@@ -2,8 +2,18 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,600,700)
 @import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700)
 $link-blue: #3399ff
+@mixin border-radius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	-ms-border-radius: $radius
+	border-radius: $radius
+@mixin transform($transform)
+	-webkit-transform: $transform
+	-ms-transform: $transform
+	transform: $transform
 *
 	box-sizing: border-box
+	border-collapse: collapse 
 
 body
 	margin: 0
@@ -15,13 +25,13 @@ body
 
 header
 	background-color: #313332
-	nav
+	nav 
 		ul
 			margin: 0
 			padding: 0
 			list-style-type: none
 			float: right
-		li
+		li 
 			display: inline-block
 		a
 			line-height: 50px
@@ -78,59 +88,22 @@ nav:after
 	display: table
 	clear: both
 
-[class*="col-"]
+
+[class*="col-"] 
 	float: left
 	min-height: 1px
 
-.col-1
-	width: 8.33%
-.col-2
-	width: 16.66%
-.col-3
-	width: 25%
-.col-4
-	width: 33.33%
-.col-5
-	width: 41.66%
-.col-6
-	width: 50%
-.col-7
-	width: 58.33%
-.col-8
-	width: 66.66%
-.col-9
-	width: 75%
-.col-10
-	width: 83.33%
-.col-11
-	width: 91.66%
-.col-12
-	width: 100%
+@for $i from 1 through 12
+	$width: 100%*$i/12
 
-.col-offset-0
-	margin-left: 0%
-.col-offset-1
-	margin-left: 8.33%
-.col-offset-2
-	margin-left: 16.66%
-.col-offset-3
-	margin-left: 25%
-.col-offset-4
-	margin-left: 33.33%
-.col-offset-5
-	margin-left: 41.66%
-.col-offset-6
-	margin-left: 50%
-.col-offset-7
-	margin-left: 58.33%
-.col-offset-8
-	margin-left: 66.66%
-.col-offset-9
-	margin-left: 75%
-.col-offset-10
-	margin-left: 83.33%
-.col-offset-11
-	margin-left: 91.66%
+	.col-#{$i}
+		width: $width
+
+@for $i from 1 through 12
+	$width: 100%*$i/12
+
+	.col-offset-#{$i}
+		width: $width
 
 section>.container
 	margin: 50px auto
@@ -148,7 +121,7 @@ section>.container
 		padding: 10px
 		font-weight: bold
 		border: 5px solid #313332
-		border-radius: 15%
+		@include border-radius(15%)
 		&:hover
 			background: #313332
 	h2
@@ -165,7 +138,7 @@ section>.container
 		font-family: 'Raleway', sans-serif
 		color: #252627
 		font-weight: bold
-	p
+	p 
 		display: block
 		max-width: 800px
 		margin: 0 auto
@@ -196,7 +169,7 @@ section>.container
 	padding: 10px
 	margin: 0 3px
 	background-color: #fff
-	border-radius: 5px
+	@include border-radius(5px)
 
 .gallery-item:hover .btn-content
 	display: block
@@ -206,7 +179,7 @@ section>.container
 	opacity: 0.5
 
 .btn-content i.fa:hover
-	transform: scale(1.2)
+	@include transform(scale(1.2))
 
 
 /* section 5 leaders-team */
@@ -214,7 +187,7 @@ section>.container
 	.team img
 		width: 100%
 		height: 220px
-		border-radius: 50%
+		@include border-radius(50%)
 		margin: auto
 		position: center
 		border: 5px solid #262626
@@ -227,7 +200,7 @@ section>.container
 .team
 	width: 220px
 	height: 220px
-	border-radius: 50%
+	@include border-radius(50%)
 	margin: auto
 	background-color: gray
 	span h3
@@ -235,7 +208,7 @@ section>.container
 		font-weight: 700
 		color: #4d0000
 		background-color: rgba(255, 255, 255, 0.5)
-		border-radius: 50%
+		@include border-radius(50%)
 		padding: 10px
 		position: absolute
 		top: 45%
@@ -252,11 +225,6 @@ section>.container
 	background-image: url(https://static.pexels.com/photos/7462/pexels-photo.jpeg)
 	padding: 30px 0 0 0
 	margin: 0
-
-.info-cont
-	padding: 0
-
-.info
 	h2
 		padding: 15px 0
 		margin: 0
@@ -268,11 +236,11 @@ section>.container
 		text-shadow: 2px 2px 1px #000
 		padding: 0 15px 0 0
 
+.info-cont
+	padding: 0
 
 /* section 7 statistic */
 .statistic
-	p
-		margin: 0
 	.col-2
 		text-align: center
 		padding: 50px 0
@@ -310,14 +278,14 @@ footer
 		text-transform: uppercase
 	p
 		padding: 0
-		font-weight: 100
+		font-weight: 100 
 	ul
 		padding-left: 0px
 	li
 		padding: 5px
 		background-color: $link-blue
 		color: #fff
-		border-radius: 3px
+		@include border-radius(3px)
 		display: inline-block
 		cursor: pointer
 
@@ -343,39 +311,18 @@ dd:after .footer .table-item
 
 /* grid for tablets */
 @media (max-width: 991px)
-	.col-m-0
-		width: 0%
-	.col-m-1
-		width: 8.33%
-	.col-m-2
-		width: 16.66%
-	.col-m-3
-		width: 25%
-	.col-m-4
-		width: 33.33%
-	.col-m-5
-		width: 41.66%
-	.col-m-6
-		width: 50%
-	.col-m-7
-		width: 58.33%
-	.col-m-8
-		width: 66.66%
-	.col-m-9
-		width: 75%
-	.col-m-10
-		width: 83.33%
-	.col-m-11
-		width: 91.66%
-	.col-m-12
-		width: 100%
+	@for $i from 0 through 12
+		$width: 100%*$i/12
+
+		.col-m-#{$i}
+			width: $width
 
 	.gallery-item .btn-content
 		position: absolute
 		left: 5%
 		top: 75%
 		display: block
-
+	
 	.team span h3
 		color: #fff
 		font-size: bold
@@ -384,18 +331,12 @@ dd:after .footer .table-item
 		top: 45%
 		left: 35%
 		visibility: visible
-
+	
 	.info,
-	.info
-		.col-m-12
-			width: 100%
-			text-align: center
-			padding: 0 10px
-		.col-m-8
-			width: 66.66%
-		.col-m-4
-			width: 33.33%
-
+	.info .col-m-12
+		text-align: center
+		padding: 0 10px
+	
 	.statistic
 		.col-m-3 p:first-child
 			font-size: 60px
@@ -405,61 +346,36 @@ dd:after .footer .table-item
 			max-height: 150px
 			margin: 0 auto
 			padding: 0 auto
-
+	
 	.footer-cont .col-m-12,
 	.col-m-5
 		margin: 0 10px
 
-@media (max-width: 767px)
-	.col-s-0
-		width: 0%
-	.col-s-1
-		width: 8.33%
-	.col-s-2
-		width: 16.66%
-	.col-s-3
-		width: 25%
-	.col-s-4
-		width: 33.33%
-	.col-s-5
-		width: 41.66%
-	.col-s-6
-		width: 50%
-	.col-s-7
-		width: 58.33%
-	.col-s-8
-		width: 66.66%
-	.col-s-9
-		width: 75%
-	.col-s-10
-		width: 83.33%
-	.col-s-11
-		width: 91.66%
-	.col-s-12
-		width: 100%
 
-	header nav,
+@media (max-width: 767px)
+	@for $i from 0 through 12
+		$width: 100%*$i/12
+		.col-s-#{$i}
+			width: $width
+
 	header nav
-		ul
+		ul 
 			float: none
 			text-align: center
-		li
+		li 
 			display: block
-
-	.gallery .col-s-12,
-	.leaders .col-s-12
-		width: 100%
-
-	.gallery-item .btn-content
+    
+	.gallery-item .btn-content 
 		position: absolute
 		left: 5%
 		top: 75%
 		display: block
-
-	.gallery-item .btn-content i
+	
+	.gallery-item .btn-content i 
 		background-color: $link-blue
-
-	.team span h3
+		color: #fff
+		
+	.team span h3 
 		color: #fff
 		font-size: bold
 		background-color: rgba(0, 0, 0, 0)
@@ -467,51 +383,28 @@ dd:after .footer .table-item
 		top: 45%
 		left: 35%
 		visibility: visible
-
+	
 	.info,
-	.info .col-s-12
+	.info .col-s-12 
 		width: 100%
 		text-align: center
 		padding: 0 10px
-
+	
 	.statistic
-		.col-s-3 p:first-child
+		.col-s-3 p:first-child 
 			font-size: 50px
 			margin: 0 auto
-		.col-s-3
+		.col-s-3 
 			width: 50%
 			max-height: 150px
 			margin: 0 auto
 			padding: 0 auto
-
+    
 	.footer-cont .col-s-12
 		width: 100%
 		margin: 0 10px
 
-@media (max-width: 650px)
-	.col-xs-0
-		width: 0%
-	.col-xs-1
-		width: 8.33%
-	.col-xs-2
-		width: 16.66%
-	.col-xs-3
-		width: 25%
-	.col-xs-4
-		width: 33.33%
-	.col-xs-5
-		width: 41.66%
-	.col-xs-6
-		width: 50%
-	.col-xs-7
-		width: 58.33%
-	.col-xs-8
-		width: 66.66%
-	.col-xs-9
-		width: 75%
-	.col-xs-10
-		width: 83.33%
-	.col-xs-11
-		width: 91.66%
-	.col-xs-12
-		width: 100%
+
+
+
+
