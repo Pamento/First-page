@@ -9,7 +9,7 @@ module.exports = function(grunt){
       	},
       dist: {
         files: {
-          '*.css'
+          'style.css': 'style.sass'
         }
       }
     },
@@ -38,6 +38,7 @@ module.exports = function(grunt){
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-browser-sync');
+  
   grunt.registerTask('default', ['sass', 'imagemin']);
 
 };
